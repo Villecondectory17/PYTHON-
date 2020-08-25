@@ -1,6 +1,7 @@
 import random
 import string
 
+
 # Satunnaisuus 
 print(random.randint(1,10))
 
