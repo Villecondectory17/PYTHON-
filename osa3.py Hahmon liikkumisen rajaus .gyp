@@ -3,6 +3,7 @@ import pygame
 
 naytto = pygame.display.set_mode((800, 800)) 
 pygame.display.set_caption("Piirtäminen")
+#viholliset = [["vihollinen.png", 200, 200]] 
  
 def piirraKuva(kuvatiedosto, x, y):
     naytto.blit(kuvatiedosto, (x, y))
