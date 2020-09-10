@@ -1,23 +1,20 @@
-# Avaa UI kirjasto 
+# Messageboxin tekeminen 
 from tkinter import *
+from tkinter import messagebox
 
-# Tk() = uusi ikkuna. Sijoitetaan se muuttujaan root.
-root = Tk()
+root = TK()
+root.title("Messagebox-harjoitus")
 
-# Funktio nappulan painamisen käsittelyyn 
-def IClicked(): 
-    #Kirjoita tekstit Labeliin, joka sijoitetaan ikkunaan, nimeltä root.
-    buttonClickLabel=Label(root, text="Nappulaa painettu")
-    buttonClick.pack()
+# Testaile messageboxin vaihtoehtoja: showinfo, showwarning, askquestion, asokcancel, asyesn
+def popup(): 
+    response = messagebox.askyesno("Messagebox haluaa sanoa: ", "Täällä ollaan")
+    # Jos käyttäjä painaa Yes:
+    if response == 1:
+        Label(root, text="Painoit Yes-nappia!").pack()
+    # Jos käyttäjä painaa No:
+    else: 
+        Label(root, text="Painoit No-nappia!").pack()
 
-
-# Esimerkki disabled nappulasta. 
-disabledButton = Button(root, text="Paina nappulaa", state=DISABLED)
-disabledButton.pack() 
-
-# Esimerkki aktiivisesta nappulasta.
-activeButton = Button(root, text="Paina nappulaa", padx=50, pady=50, command=IClicked, fg="red")
-activeButton.pack()
-
-# Käynnistä root niminen ikkuna. 
+# Nappula, joka kutsuu funktiota popup 
+Button(root, text="Viesti", command=popup).pack()
 root.mainloop() 
