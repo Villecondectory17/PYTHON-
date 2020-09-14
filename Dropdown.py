@@ -21,10 +21,11 @@ def show():
     myLabel=Label(root, text=selectItem.get()).pack()
     
 drop = Optionmenu(root, selectItem, *options
-drop.pack()
+drop.pack(root, text fill = BOTH, expand = True)
                   
 myButton = Button(root, text="Valitse tästä", command=show).pack()
-
+myButton.pack(fill = BOTH, expand = True)
+                 
 root.mainloop()
   
   
