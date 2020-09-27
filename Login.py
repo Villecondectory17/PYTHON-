@@ -28,10 +28,10 @@ class xyz:
         '''Check username and password entered are correct'''
         if self.username.get() == self.user and self.password.get() == self.passw:
 
-            #Destroy current window
+            #Tuhoa nykyinen ikkuna
             root.destroy()
 
-            #Open new window 
+            #Avaa uusi ikkuna 
             newroot = Tk()
             application = School_Portal(newroot) 
             newroot.mainloop() 
@@ -39,7 +39,7 @@ class xyz:
 
         else:
 
-            #'''Prompt user that either id or password is wrong'''
+            #'''Kysy käyttäjältä, että joko tunnus tai salasana on väärä''' 
             self.message = Label(text = 'Username or Password incorrect. Try again!',fg = 'Red')
             self.message.grid(row=6,column=2) 
 
