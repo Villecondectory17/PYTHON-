@@ -61,7 +61,7 @@ def deleteRecord(sqliteConnection, sqlite_delete_query, record_id):
         cursor = sqliteConnection.cursor()
         print("Connected to SQLite")
 
-        # Deleting single record now
+        # Poistetaan yksi tietue nyt
 
         cursor.execute(sqlite_delete_query + str(record_id)) 
         sqliteConnection.commit()
@@ -92,15 +92,15 @@ def main():
                                     FOREIGN KEY (kayttaja_id) REFERENCES Users (kayttaja_id) 
                                 );""" 
 
-    # create a database connection
+    # Luo tietokanta yhteys
     conn = create_connection(database)
 
-    # create tables
+    # Luo taulukot
     if conn is not None:
         # create users table
         create_table(conn, sql_create_users_table)
 
-        # create tasks table
+        # Luo tehtävätaulukko
         create_table(conn, sql_create_tasks_table)
     else:
         print("Error! cannot create the database connection.")
