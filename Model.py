@@ -1,10 +1,10 @@
-#Import everything from tkinter 
+#Tuo kaikki tkinteristä 
 from tkinter import * 
 
-#Create Window object
+#Luo ikkuna objekti
 window=Tk()
 
-#define four labels Title Author Year ISBN
+#Määritä neljä tunnistetta Otsikko, tekijä, vuosi, ISBN
 l1=Label(window, text="Title") 
 l1.grid(row=0,column=0) 
 
@@ -17,7 +17,7 @@ l1.grid(row=1,column=0)
 l1=Label(window, text="ISBN")
 l1.grid(row=1,column=2)
 
-#define Entries 
+#Määritä merkinnät
 title_text=StringVar()
 e1=Entry(window,textvariable=title_text) 
 e1.grid(row=0,column=1)
