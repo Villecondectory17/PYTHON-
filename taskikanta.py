@@ -97,7 +97,7 @@ def main():
 
     # Luo taulukot
     if conn is not None:
-        # create users table
+        # Luo käyttäjien taulukko
         create_table(conn, sql_create_users_table)
 
         # Luo tehtävätaulukko
