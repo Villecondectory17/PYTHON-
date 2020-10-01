@@ -83,12 +83,23 @@ t2 = StringVar()
 t3 = StringVar()
 t4 = StringVar()
 
-
+def show_values():
+    print (w1.get(), w2.get())
+    
 wrapper1 = LabelFrame(root, text="Tehtävälista") 
 wrapper2 = LabelFrame(root, text="Etsi")
 wrapper3 = LabelFrame(root, text="Tehtävän tiedot") 
 wrapper31 = Frame(wrapper3)
 wrapper32 = Frame(wrapper3) 
+
+master = Tk()
+w1 = Scale(master, from_=0, to=42)
+w1.set(19)
+w1.pack()
+w2 = Scale(master, from_=0, to=200, orient=HORIZONTAL)
+w2.set(23)
+w2.pack()
+Button(master, text='Show', command=show_values).pack()  
 
 wrapper1.pack(fill="both", expand="yes", padx=20, pady=10)
 wrapper2.pack(fill="both", expand="yes", padx=20, pady=10)
@@ -109,14 +120,14 @@ trv.pack()
 
 
 trv.heading(1, text="ID") 
-trv.heading(2,  text="Luokka") 
+trv.heading(2, text="Luokka") 
 trv.heading(3, text="Otsikko")
 trv.heading(4, text="Tehtävä") 
 
 trv.bind('<Double 1>', getrow)
 
 
-query = "SELECT tehtava_id, luokka, tehtava_otsikko, tehtava FROM Tasks" 
+query = "SELECT tehtava_id, luokka, tehtava_otsikko, tehtava FROM Tasks"  
 cursor.execute(query) 
 rows = cursor.fetchall()
 update(rows)
@@ -129,7 +140,7 @@ ent = Entry(wrapper2, textvariable=q)
 ent.pack(side=tk.LEFT, padx=6)
 btn = Button(wrapper2, text="Etsi", command=search)
 btn.pack(side=tk.LEFT, padx=6)
-cbtn = Button(wrapper2, text="Tyhjennä", command=clear)
+cbtn = Button(wrapper2, text="Tyhjennä", command=clear) 
 cbtn.pack(side=tk.LEFT, padx=6) 
 
 
@@ -158,7 +169,7 @@ ent4 = Entry(wrapper31, textvariable=t4, width=50)
 ent4.grid(row=3, column=1, padx=5, pady=3, sticky=W)  
 
 up_btn = Button(wrapper32, text="Päivitä", command=update_task) 
-add_btn = Button(wrapper32, text="Lisää uusi", command=add_new)
+add_btn = Button(wrapper32, text="Lisää uusi", command=add_new) 
 delete_btn = Button(wrapper32, text="Poista", command=delete_task)  
 
 add_btn.grid(row=4, column=0, padx=5, pady=3)
@@ -170,4 +181,4 @@ delete_btn.grid(row=4, column=2, padx=5, pady=3)
 
 root.title("My Application")
 root.geometry("800x700")
-root.mainloop()
+root.mainloop() 
