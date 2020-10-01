@@ -42,7 +42,7 @@ def update_task():
     tehtava_otsikko = t3.get()
     tehtava = t4.get() 
 
-    if messagebox.askyesno("Vahvista", "Haluatko varmasti pÃ¤ivittÃ¤Ã¤ tehtÃ¤vÃ¤n?"): 
+    if messagebox.askyesno("Vahvista", "Haluatko varmasti päivittää tehtävän?"): 
         query = "UPDATE Tasks SET luokka = ?, tehtava_otsikko = ?, tehtava = ? WHERE tehtava_id = ?" 
         cursor.execute(query, (luokka, tehtava_otsikko, tehtava, tehtava_id)) 
         mydb.commit()
@@ -63,7 +63,7 @@ def add_new():
 
 def delete_task(): 
     tehtava_id = t1.get()
-    if messagebox.askyesno("Vahvista poistaminen?", "Oletko varma ettÃ¤ haluat poistaa tehtÃ¤vÃ¤n?"):
+    if messagebox.askyesno("Vahvista poistaminen?", "Oletko varma että haluat poistaa tehtävän?"):
         query = "DELETE FROM Tasks WHERE tehtava_id = ? "
         cursor.execute(query, (tehtava_id, ))
         mydb.commit() 
@@ -84,9 +84,9 @@ t3 = StringVar()
 t4 = StringVar()
 
 
-wrapper1 = LabelFrame(root, text="TehtÃ¤vÃ¤lista") 
+wrapper1 = LabelFrame(root, text="Tehtävälista") 
 wrapper2 = LabelFrame(root, text="Etsi")
-wrapper3 = LabelFrame(root, text="TehtÃ¤vÃ¤n tiedot") 
+wrapper3 = LabelFrame(root, text="Tehtävän tiedot") 
 wrapper31 = Frame(wrapper3)
 wrapper32 = Frame(wrapper3) 
 
@@ -111,13 +111,13 @@ trv.pack()
 trv.heading(1, text="ID") 
 trv.heading(2,  text="Luokka") 
 trv.heading(3, text="Otsikko")
-trv.heading(4, text="TehtÃ¤vÃ¤") 
+trv.heading(4, text="Tehtävä") 
 
 trv.bind('<Double 1>', getrow)
 
 
 query = "SELECT tehtava_id, luokka, tehtava_otsikko, tehtava FROM Tasks" 
-cursor.execute(query)
+cursor.execute(query) 
 rows = cursor.fetchall()
 update(rows)
 
@@ -129,7 +129,7 @@ ent = Entry(wrapper2, textvariable=q)
 ent.pack(side=tk.LEFT, padx=6)
 btn = Button(wrapper2, text="Etsi", command=search)
 btn.pack(side=tk.LEFT, padx=6)
-cbtn = Button(wrapper2, text="TyhjennÃ¤", command=clear)
+cbtn = Button(wrapper2, text="Tyhjennä", command=clear)
 cbtn.pack(side=tk.LEFT, padx=6) 
 
 
@@ -152,13 +152,13 @@ lbl3.grid(row=2, column=0, padx=5, pady=3)
 ent3 = Entry(wrapper31, textvariable=t3, width=18)
 ent3.grid(row=2, column=1, padx=5, pady=3, sticky=W) 
 
-lbl4 = Label(wrapper31, text="TehtÃ¤vÃ¤") 
+lbl4 = Label(wrapper31, text="Tehtävä") 
 lbl4.grid(row=3, column=0, padx=5, pady=3)
 ent4 = Entry(wrapper31, textvariable=t4, width=50)
 ent4.grid(row=3, column=1, padx=5, pady=3, sticky=W)  
 
-up_btn = Button(wrapper32, text="PÃ¤ivitÃ¤", command=update_task) 
-add_btn = Button(wrapper32, text="LisÃ¤Ã¤ uusi", command=add_new)
+up_btn = Button(wrapper32, text="Päivitä", command=update_task) 
+add_btn = Button(wrapper32, text="Lisää uusi", command=add_new)
 delete_btn = Button(wrapper32, text="Poista", command=delete_task)  
 
 add_btn.grid(row=4, column=0, padx=5, pady=3)
