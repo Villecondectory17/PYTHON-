@@ -83,23 +83,12 @@ t2 = StringVar()
 t3 = StringVar()
 t4 = StringVar()
 
-def show_values():
-    print (w1.get(), w2.get())
-    
+
 wrapper1 = LabelFrame(root, text="Tehtävälista") 
 wrapper2 = LabelFrame(root, text="Etsi")
 wrapper3 = LabelFrame(root, text="Tehtävän tiedot") 
 wrapper31 = Frame(wrapper3)
 wrapper32 = Frame(wrapper3) 
-
-master = Tk()
-w1 = Scale(master, from_=0, to=42)
-w1.set(19)
-w1.pack()
-w2 = Scale(master, from_=0, to=200, orient=HORIZONTAL)
-w2.set(23)
-w2.pack()
-Button(master, text='Show', command=show_values).pack()  
 
 wrapper1.pack(fill="both", expand="yes", padx=20, pady=10)
 wrapper2.pack(fill="both", expand="yes", padx=20, pady=10)
@@ -107,17 +96,19 @@ wrapper3.pack(fill="both", expand="yes", padx=20, pady=10)
 wrapper31.pack(fill="both", expand="yes", padx=20, pady=10) 
 wrapper32.pack(fill="both", expand="yes", padx=20, pady=10) 
 
-trv = ttk.Treeview(wrapper1, columns=(1,2,3,4), show="headings", height="6")
+trv = ttk.Treeview(wrapper1, columns=(1,2,3,4), show="headings", selectmode='browse') 
 
 trv.column(1, width=50)
 trv.column(2, width=70)
 trv.column(3, width=180)
 trv.column(4, width=500) 
 
-trv.pack()
+trv.pack(side='left')
 
+vsb = ttk.Scrollbar(wrapper1, orient="vertical", command=trv.yview) 
+vsb.pack(side='right', fill='y') 
 
-
+trv.configure(yscrollcommand=vsb.set)
 
 trv.heading(1, text="ID") 
 trv.heading(2, text="Luokka") 
@@ -180,5 +171,8 @@ delete_btn.grid(row=4, column=2, padx=5, pady=3)
 
 
 root.title("My Application")
-root.geometry("800x700")
+root.geometry("875x700") 
 root.mainloop() 
+
+cursor.close()
+mydb.close() 
