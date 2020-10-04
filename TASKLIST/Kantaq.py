@@ -103,7 +103,7 @@ def main():
         # create tasks table
         create_table(conn, sql_create_tasks_table)
     else:
-        print("Error! cannot create the database connection.")
+        print("Error! cannot create the database connection.") 
 
 if __name__ == '__main__':
     main()
